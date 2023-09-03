@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const todoSchema = new Schema({
+const subtaskSchema = new Schema({
   title: { type: String, required: true },
   status: {
     type: String,
@@ -11,4 +11,4 @@ const todoSchema = new Schema({
   created_at: { type: Date, default: Date.now() },
 });
 
-module.exports = model("todo", todoSchema);
+module.exports = model("subtask", subtaskSchema);
