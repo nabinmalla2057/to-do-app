@@ -61,6 +61,13 @@ router.get("/", async (req, res, next) => {
 });
 
 //removeById
-router.get("/", async (req, res, next) => {});
+router.get("/", async (req, res, next) => {
+  try {
+    await subtaskcontroller.removeSubtaskById(req.params.id);
+    res.status(204).end();
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
