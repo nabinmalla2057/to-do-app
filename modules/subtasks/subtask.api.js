@@ -22,10 +22,30 @@ router.get("/", async (req, res, next) => {
 });
 
 //getById
-router.get("/", async (req, res, next) => {});
+router.get("/", async (req, res, next) => {
+  try {
+    const subtasks = await subtaskcontroller.getSubtaskById(req.params.id);
+    if (!subtask) {
+      return res.status(404).json({ message: "Subtask not found" });
+    }
+    res.json(subtask);
+  } catch (error) {
+    next();
+  }
+});
 
 //updateById
-router.get("/", async (req, res, next) => {});
+router.get("/", async (req, res, next) => {
+  try {
+    const updatedSubtask = await subtaskcontroller.updateSubtaskById(
+      req.params.id,
+      req.body
+    );
+    res.json(updatedSubtask);
+  } catch (error) {
+    next(error);
+  }
+});
 
 //updateStatus
 router.get("/", async (req, res, next) => {});
