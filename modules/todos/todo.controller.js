@@ -9,6 +9,15 @@ async function createTodo(data) {
   }
 }
 
+async function listTodos() {
+  try {
+    const todos = await Todo.find();
+    return todos;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getTodoById(id) {
   try {
     const todo = await Todo.findById(id);
