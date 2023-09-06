@@ -47,19 +47,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//updateStatus
-router.get("/", async (req, res, next) => {
-  try {
-    const updatedStatus = await subtaskcontroller.updateSubtaskStatusById(
-      req.params.id,
-      req.body.status
-    );
-    res.json(updatedStatus);
-  } catch (error) {
-    next(error);
-  }
-});
-
 //removeById
 router.get("/", async (req, res, next) => {
   try {
