@@ -31,6 +31,16 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await todoController.updateStatus(id, req.body);
+    res.json({ data: result, msg: "Sucessful" });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
