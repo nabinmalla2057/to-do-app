@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
 const commonSchema = require("../common/commonschema");
+const ObjectId = Schema.Types;
+
 const subtaskSchema = new Schema({
   title: { type: String, required: true },
   status: {
@@ -7,6 +9,10 @@ const subtaskSchema = new Schema({
     enum: ["[pending", "completed"],
     required: true,
     default: "pending",
+  },
+  todo: {
+    type: ObjectId,
+    ref: "Todo",
   },
   ...commonSchema,
 });
