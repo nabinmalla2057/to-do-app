@@ -3,8 +3,10 @@ const todoController = require("./todo.controller");
 
 router.post("/", async (req, res, next) => {
   try {
-    const result = await todoController.create(req.body);
-    res.json({ data: result, msg: "sucessful" });
+    const { title } = req.body;
+    if (!title) throw newError("Title is missing...");
+    const result = await todoController.create({ title });
+    res, json({ data: result, msg: "success" });
   } catch (err) {
     next(err);
   }
