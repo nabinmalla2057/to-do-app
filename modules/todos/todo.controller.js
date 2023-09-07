@@ -1,4 +1,9 @@
+const todoModel = require("./todo.model");
 const Todo = require("./todo.model");
+
+const create = (payload) => {
+  return todoModel.create(payload);
+};
 
 async function createTodo(data) {
   try {
