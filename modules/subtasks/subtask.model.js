@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-
+const commonSchema = require("../common/commonschema");
 const subtaskSchema = new Schema({
   title: { type: String, required: true },
   status: {
@@ -8,7 +8,7 @@ const subtaskSchema = new Schema({
     required: true,
     default: "pending",
   },
-  created_at: { type: Date, default: Date.now() },
+  ...commonSchema,
 });
 
 module.exports = model("subtask", subtaskSchema);
