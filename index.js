@@ -7,7 +7,7 @@ const app = express();
 const indexRouter = require("./routes");
 const PORT = +process.env.PORT || 3333;
 
-mongoose.connect("mongodb://127.0.0.1:27017/todoapp").then(() => {
+mongoose.connect(process.env.DB_URL).then(() => {
   console.log("Database Connected..");
 });
 
@@ -23,5 +23,5 @@ app.use((err, req, res, next) => {
 // const PORT = +process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log("App is running on port 3333");
+  console.log(`App is running on port ${PORT}`);
 });

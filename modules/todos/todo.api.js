@@ -4,9 +4,9 @@ const todoController = require("./todo.controller");
 router.post("/", async (req, res, next) => {
   try {
     const { title } = req.body;
-    if (!title) throw newError("Title is missing...");
+    if (!title) throw new Error("Title is missing..."); // Fixed the typo here
     const result = await todoController.create({ title });
-    res, json({ data: result, msg: "success" });
+    res.json({ data: result, msg: "success" });
   } catch (err) {
     next(err);
   }
@@ -14,8 +14,8 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    const result = await todoController.getData();
-    res.json({ data: result, msg: "Sucessful" });
+    const result = await todoController.list(); // Corrected function name
+    res.json({ data: result, msg: "Successful" });
   } catch (err) {
     next(err);
   }
@@ -24,8 +24,8 @@ router.get("/", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await todoController.upateDataByID(id, res.body);
-    res.json({ data: result, msg: "Sucessful" });
+    const result = await todoController.updateById(id, req.body); // Corrected function name
+    res.json({ data: result, msg: "Successful" });
   } catch (err) {
     next(err);
   }
@@ -35,7 +35,7 @@ router.patch("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await todoController.updateStatus(id, req.body);
-    res.json({ data: result, msg: "Sucessful" });
+    res.json({ data: result, msg: "Successful" });
   } catch (err) {
     next(err);
   }
@@ -44,8 +44,8 @@ router.patch("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await todoController.deleteDataByID(id);
-    res.json({ data: result, msg: "Sucessful" });
+    const result = await todoController.removeById(id); // Corrected function name
+    res.json({ data: result, msg: "Successful" });
   } catch (err) {
     next(err);
   }

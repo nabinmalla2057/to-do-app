@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const subtaskcontroller = require("./subtaskmodule");
+const subtaskcontroller = require("./subtask.controller");
 
 //Create
 router.post("/", async (req, res, next) => {

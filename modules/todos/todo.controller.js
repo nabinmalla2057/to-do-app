@@ -1,5 +1,4 @@
 const todoModel = require("./todo.model");
-const Todo = require("./todo.model");
 
 const create = (payload) => {
   return todoModel.create(payload);
@@ -27,7 +26,7 @@ const list = async () => {
 
 const updateStatus = async (id, payload) => {
   const { status } = payload;
-  if (!status) throw newError("Status is missing...");
+  if (!status) throw new Error("Status is missing..."); // Corrected "newError" to "new Error"
   return await todoModel.findOneAndUpdate(
     { _id: id },
     { status },
